@@ -38,6 +38,7 @@ module.exports = function (app) {
     res.render('error');
   });
   */
+  
   app.get('/', lib.passport.ensureAuthenticated, function (req, res, next) {
     if(req.session.passport.user.grade == undefined) {
       return res.redirect('/logout');
@@ -49,6 +50,16 @@ module.exports = function (app) {
   });
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  app.get('/intro', lib.passport.ensureAuthenticated, function (req, res, next) {
+    res.render ('intro')
+  });
+
+  app.get('/intro2', lib.passport.ensureAuthenticated, function (req, res, next) {
+    res.render ('intro2')
+  });
+
+
   app.get('/member', lib.passport.ensureAuthenticated, function (req, res, next) {
     //console.log ('req.session.member',req.session.member);
     //var member = lib.mysql.findAdminMemberId ([req.session.member]);
