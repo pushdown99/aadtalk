@@ -6,11 +6,14 @@ let moment  = require('moment-timezone');
 let fs      = require('fs');
 
 module.exports = function (app) {
-  let dotenv  = require('dotenv').config({ path: require('find-config')('.env') })
+  let dotenv = require('dotenv').config({ path: require('find-config')('.env') })
+  let lib     = require('../lib');
   let verbose = true;
 
   lib.mysql.connect (process.env.DB_HOSTNAME, process.env.DB_USERNAME, process.env.DB_PASSWORD, process.env.DB_DATABASE, verbose);
   lib.passport.setup(app);
+  
+
   
   //lib.receipts (app);
   //lib.upload (app);
@@ -44,7 +47,15 @@ module.exports = function (app) {
       res.render('admin', {user: req.session.passport.user, group: req.session.group, page: router.page.getPage('/admin')});
     }
   });
- 
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  app.get('/member', lib.passport.ensureAuthenticated, function (req, res, next) {
+    //console.log ('req.session.member',req.session.member);
+    //var member = lib.mysql.findAdminMemberId ([req.session.member]);
+    //res.render('member', {member: member, user: req.session.passport.user, page: router.page.getPage('/member')});
+    res.send ('Hello')
+  });
+  
   app.get("/dashboard", function(req, res, next) {
     res.render("dashboard");
   });
