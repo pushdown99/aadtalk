@@ -1,0 +1,9 @@
+/* @import url('https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/woff2/SUIT.css'); */
+@import url('https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css');
+@import url('https://rsms.me/inter/inter.css');
+
+body, a, h1, h2, h3, h4, h5, h6, input, textarea, select {
+	/* font-family: 'SpoqaHanSansNeo', 'Noto Sans KR', 'inter', sans-serif; */
+	font-family: /* 본문용 서체 */ '-apple-system', 'BlinkMacSystemFont', 'Apple SD Gothic Neo', 'Inter', 'Spoqa Han Sans', 'Segoe UI', Sans-Serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    /* font-family: 'SF Mono', 'Consolas', 'Menlo', monospace; */
+}

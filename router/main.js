@@ -52,11 +52,17 @@ module.exports = function (app) {
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   app.get('/intro', lib.passport.ensureAuthenticated, function (req, res, next) {
-    res.render ('intro')
+    console.log (req.session.passport.user)
+    res.render ('intro', {user: req.session.passport.user})
+  });
+
+  app.get('/top-nav', lib.passport.ensureAuthenticated, function (req, res, next) {
+    console.log (req.session.passport.user)
+    res.render ('top-nav', {user: req.session.passport.user})
   });
 
   app.get('/intro2', lib.passport.ensureAuthenticated, function (req, res, next) {
-    res.render ('intro2')
+    res.render ('intro2', {user: req.session.passport.user})
   });
 
 

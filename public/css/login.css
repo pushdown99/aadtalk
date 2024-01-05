@@ -49,6 +49,43 @@
   width: 100%;
   height: 300px; //change as per your requirement }
 
+  .user-panel {
+    position: relative;
+  
+    [class*="sidebar-dark"] & {
+      border-bottom: 1px solid lighten($dark, 12%);
+    }
+  
+    [class*="sidebar-light"] & {
+      border-bottom: 1px solid $gray-300;
+    }
+  
+    &,
+    .info {
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  
+    .image {
+      display: inline-block;
+      padding-left: $nav-link-padding-x - .2;
+    }
+  
+    img {
+      height: auto;
+      width: $sidebar-user-image-width;
+    }
+  
+    .info {
+      display: inline-block;
+      padding: 5px 5px 5px 10px;
+    }
+  
+    .status,
+    .dropdown-menu {
+      font-size: $font-size-sm;
+    }
+  }
 
 /* Dropdown Button */
 .dropbtn {
