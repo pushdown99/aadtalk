@@ -1,130 +1,16 @@
 <!DOCTYPE html>
+<%- include ("layout/header") %>
+<%- include ("layout/navbar") %>
 
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
+<script>
+  <% if (typeof(passport) != undefined && passport != undefined && passport.user != undefined) { %>
+    var user = <%-JSON.stringify(passport.user) %>;
+    console.log ('user:', user);
+  <% } %>
+</script>
 
-  <title>ATalk</title>
+<section class="content">
+  <%- include ("pages/" + 'home') %>
+</section>
 
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  <link rel="stylesheet" href="css/atalk.css">
-</head>
-<body class="hold-transition layout-top-nav">
-<div class="wrapper">
-
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
-    <div class="container">
-      <a href="https://artsactsdays.kr/" class="navbar-brand">
-        <img src="images/logo.png" alt="ATalk Logo" class="brand-image img-circle elevation-3"
-             style="opacity: .8">
-        &nbsp;<span class="brand-text font-weight-light">ATalk</span>
-      </a>
-      
-      <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- Right navbar links -->
-      <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-              로그인 <i class="far fa-user"></i>
-            </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  <!-- /.navbar -->
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container">
-        <div class="row mb-2">
-          <div class="col-sm-3"></div>
-          <div class="col-sm-6">
-            <!--
-            <h6 class="m-0 text-dark"> 만나서 반가워요 ATalk 입니다.</h6>
-            -->
-          </div><!-- /.col -->
-          <div class="col-sm-3"></div>
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
-    <!-- Main content -->
-    <div class="content">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-3"></div>
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="card-title m-0">만나서 반가워요 ATalk 입니다.</h5>
-              </div>
-              <div class="card-body">
-                <img src="images/face.png" class="rounded mx-auto d-block img-fluid img-center" alt="..."></br>
-                <!--
-                <h6 class="card-title">Special title treatment</h6>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                -->
-                <table class="table table-borderless text-center">
-                    <tr>
-                        <td><a href="#" class="btn btn-block btn-secondary float-left">토크 입장하기</a></td>
-                        <td><a href="#" class="btn btn-block btn-secondary float-right">토크 만들기</a></td>
-                    </tr>
-                </table>
-                <!--
-                <a href="#" class="btn btn-secondary">토크 입장하기</a>
-                <a href="#" class="btn btn-secondary float-right">토크 만들기</a>
-                -->
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6"></div>
-          <!-- /.col-md- -->
-        </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-    <div class="p-3">
-      <h5>Title</h5>
-      <p>Sidebar content</p>
-    </div>
-  </aside>
-  <!-- /.control-sidebar -->
-
-  <!-- Main Footer -->
-  <footer class="main-footer">
-    <div class="container">
-    <!-- Default to the left -->
-    <small><strong>Copyright &copy; 2023 <a href="#">ATalk</a>.</strong> All rights reserved.</small>
-    </div>
-  </footer>
-</div>
-<!-- ./wrapper -->
-
-<!-- REQUIRED SCRIPTS -->
-
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
-</body>
-</html>
+<%- include ("layout/footer") %>

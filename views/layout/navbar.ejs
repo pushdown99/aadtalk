@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+    <div class="container">
+      <a href="https://artsactsdays.kr/" class="navbar-brand">
+        <img src="images/logo.png" alt="ATalk Logo" class="brand-image img-circle elevation-3"
+             style="opacity: .8">
+        &nbsp;<span class="brand-text font-weight-light">ATalk</span>
+      </a>
+      
+      <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Right navbar links -->
+      <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+        <li class="nav-item">
+          <% if (passport === undefined || passport.user == undefined){ %>
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <a class="nav-link" href="/login">로그인
+                <div class="image">
+                  <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                </div>
+                </a>
+            </div>
+          <% } else { %>
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <a class="nav-link" href="#"><%- passport.user.username %>
+                <div class="image">
+                  <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                </div>
+                </a>
+            </div>
+          <% } %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- /.navbar -->

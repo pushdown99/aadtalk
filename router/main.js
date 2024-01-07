@@ -10,7 +10,7 @@ module.exports = function (app) {
   let lib     = require('../lib');
   let verbose = true;
 
-  lib.mysql.connect (process.env.DB_HOSTNAME, process.env.DB_USERNAME, process.env.DB_PASSWORD, process.env.DB_DATABASE, verbose);
+  lib.mysql.connect(process.env.DB_HOSTNAME, process.env.DB_USERNAME, process.env.DB_PASSWORD, process.env.DB_DATABASE, verbose);
   lib.passport.setup(app);
   
 
@@ -39,6 +39,7 @@ module.exports = function (app) {
   });
   */
   
+  /*
   app.get('/', lib.passport.ensureAuthenticated, function (req, res, next) {
     if(req.session.passport.user.grade == undefined) {
       return res.redirect('/logout');
@@ -47,22 +48,81 @@ module.exports = function (app) {
       req.session.group = lib.mysql.searchAdminGroupByName([req.session.passport.user.grade]);
       res.render('admin', {user: req.session.passport.user, group: req.session.group, page: router.page.getPage('/admin')});
     }
+  }); 
+ */
+  
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  app.get('/', function (req, res, next) {
+    console.log ('req.session.passport', req.session.passport)
+    res.render ('home', {passport: req.session.passport, 'page': 'home'})
   });
 
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  app.get('/home', function (req, res, next) {
+    console.log ('req.session.passport', req.session.passport)
+    res.render ('home', {passport: req.session.passport, 'page': 'home'})
+  });
+
+  app.get('/signup', function (req, res, next) {
+    res.render ('signup')
+  });
+
+  app.get('/404', function (req, res, next) {
+    res.render ('404')
+  });
+
+  app.get('/500', function (req, res, next) {
+    res.render ('500')
+  });
+
+  app.get('/blank', function (req, res, next) {
+    res.render ('blank')
+  });
+
+  app.get('/contacts', function (req, res, next) {
+    res.render ('contacts')
+  });
+
+  app.get('/language-menu', function (req, res, next) {
+    res.render ('language-menu')
+  });
+
+  app.get('/lockscreen', function (req, res, next) {
+    res.render ('lockscreen')
+  });
+
+  app.get('/profile', function (req, res, next) {
+    res.render ('profile')
+  });
+
+
+  app.get('/forgot-password', function (req, res, next) {
+    res.render ('forgot-password', {passport: req.session.passport, 'page': 'forgot-password'})
+  });
+
+  app.post ('/register', function (req, res, next) {
+    console.log ("req.body", req.body)
+    let user     = req.body.user
+    let username = req.body.username
+    let password = req.body.password
+    console.log (id, password, username)
+    res.render ('signup')
+  });
+
+  app.get('/admin', lib.passport.ensureAuthenticated, function (req, res, next) {
+    console.log (req.session.passport)
+    res.render ('admin', {passport: req.session.passport, 'page': 'home'})
+  });
 
   app.get('/intro', lib.passport.ensureAuthenticated, function (req, res, next) {
     console.log (req.session.passport.user)
-    res.render ('intro', {user: req.session.passport.user})
+    res.render ('intro', {passport: req.session.passport.user})
   });
 
-  app.get('/home', lib.passport.ensureAuthenticated, function (req, res, next) {
-    console.log (req.session.passport.user)
-    res.render ('home', {user: req.session.passport.user})
-  });
 
   app.get('/intro2', lib.passport.ensureAuthenticated, function (req, res, next) {
-    res.render ('intro2', {user: req.session.passport.user})
+    res.render ('intro2', {passport: req.session.passport.user})
   });
 
 
