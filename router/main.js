@@ -56,9 +56,9 @@ module.exports = function (app) {
     res.render ('intro', {user: req.session.passport.user})
   });
 
-  app.get('/top-nav', lib.passport.ensureAuthenticated, function (req, res, next) {
+  app.get('/home', lib.passport.ensureAuthenticated, function (req, res, next) {
     console.log (req.session.passport.user)
-    res.render ('top-nav', {user: req.session.passport.user})
+    res.render ('home', {user: req.session.passport.user})
   });
 
   app.get('/intro2', lib.passport.ensureAuthenticated, function (req, res, next) {

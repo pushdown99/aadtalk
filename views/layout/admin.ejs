@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<%- include ("layout/header") %>
+<%- include ("layout/navbar") %>
+<%- include ("layout/sidebar") %>
+<%- include ("layout/content-header") %>
+
+<script>
+  var userInfo = <%-JSON.stringify(user) %>;
+  console.log (userInfo);
+  var groupInfo = <%-JSON.stringify(group) %>;
+  console.log (groupInfo);
+</script>
+
+
+<section class="content">
+<%- include ("pages/" + page["name"]) %>
+</section>
+
+<%- include ("layout/modal") %>
+<%- include ("layout/tailer") %>
